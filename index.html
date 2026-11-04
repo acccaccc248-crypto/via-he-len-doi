@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>VỈA HÈ LÊN ĐỜI</title>
+  <meta name="description" content="Game giả tưởng trên TikTok LIVE: phố đêm, nhân vật lên bậc bằng xu ảo trong phiên. Không đổi xu ra tiền.">
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Three.js pinned 0.160.0 — must match CONFIG.three in config.js -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- 3D night-street scene, landscape frame. -->
+  <main id="scene-container" aria-label="Phố đêm Vỉa Hè Lên Đời"></main>
+
+  <!-- Permanent labels. Text is synced from CONFIG.labels by js/main.js;
+       placeholders below are replaced at startup, never hardcode label
+       text here. Line 3 shows on load, then repeats on a timer. -->
+  <div id="game-labels" aria-label="Nhãn game">
+    <div id="label-line-1">VỈA HÈ LÊN ĐỜI</div>
+    <div id="label-line-2">…</div>
+    <div id="label-line-3">…</div>
+  </div>
+
+  <!-- Session strip: filled by game handlers (level, session coins, clock). -->
+  <div id="session-strip" aria-live="polite"></div>
+
+  <!-- Leaderboard: filled by game handlers (top 5 of the session). -->
+  <aside id="leaderboard" aria-label="Bảng top phiên"></aside>
+
+  <!-- Schedule board: the schedule module rebuilds everything inside
+       this board, so the countdown lives OUTSIDE it (the module looks
+       #countdown up separately after rebuilding the board). -->
+  <aside id="schedule-board" aria-label="Lịch phiên">
+    <h2 id="schedule-title">Lịch phiên</h2>
+    <div id="schedule-rituals"></div>
+    <div id="schedule-next"></div>
+  </aside>
+  <div id="countdown" aria-live="polite"></div>
+
+  <!-- Ritual banner: filled by game handlers when a ritual runs. -->
+  <div id="ritual-banner" aria-live="polite"></div>
+
+  <!-- Spoken caption line: filled by game handlers / TTS. -->
+  <div id="tts-caption" aria-live="polite"></div>
+
+  <div id="controls">
+    <div class="row">
+      <button id="btn-music" type="button" aria-pressed="false">🔇 Nhạc: Tắt</button>
+      <button id="btn-fps" type="button" aria-pressed="false">FPS</button>
+    </div>
+    <div id="relay-status" data-status="disconnected">Relay: chưa kết nối</div>
+    <div id="fps-counter" hidden>— FPS</div>
+  </div>
+
+  <!-- One tap unlocks audio on phone browsers. -->
+  <div id="start-overlay">
+    <h1>VỈA HÈ LÊN ĐỜI</h1>
+    <p>Phố đêm lên đèn — bình luận để nhân vật di chuyển, tích xu ảo, lên bậc.</p>
+    <button id="btn-start" type="button">Bắt đầu</button>
+    <p>Bình luận “bán: …” để mở sạp · “nâng cấp” để lên bậc · nhắn 1 hoặc 2 khi tới giờ bình chọn.</p>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
